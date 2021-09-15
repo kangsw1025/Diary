@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
 import {
-  getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
 } from "firebase/auth";
+import { authService } from "../firebase";
+import CreateAccount from "../components/CreateAccount";
 
 function Auth() {
+  const [createAccount, setCreateAccount] = useState(false);
   const onSocialClick = async e => {
     const { name } = e.target;
     var provider;
@@ -17,20 +19,31 @@ function Auth() {
     } else if (name === "github") {
       provider = new GithubAuthProvider();
     }
-    await signInWithPopup(getAuth(), provider);
+    await signInWithPopup(authService, provider);
+  };
+
+  const onToggleState = () => {
+    setCreateAccount(createAccount => !createAccount);
   };
 
   return (
     <>
-      <AuthForm />
-      <div>
-        <button onClick={onSocialClick} name="google">
-          Login With Google
-        </button>
-        <button onClick={onSocialClick} name="github">
-          Login With Github
-        </button>
-      </div>
+      {createAccount ? (
+        <CreateAccount onToggleState={onToggleState} />
+      ) : (
+        <>
+          <AuthForm />
+          <div>
+            <button onClick={onToggleState}>CreateAccount</button>
+            <button onClick={onSocialClick} name="google">
+              Login With Google
+            </button>
+            <button onClick={onSocialClick} name="github">
+              Login With Github
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 }

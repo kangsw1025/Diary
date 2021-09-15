@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { authService } from "../firebase";
 
 function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -17,11 +17,14 @@ function AuthForm() {
     e.preventDefault();
 
     try {
-      let data;
-      data = await signInWithEmailAndPassword(getAuth(), email, password);
+      const data = await signInWithEmailAndPassword(
+        authService,
+        email,
+        password
+      );
+      console.log(data);
     } catch (e) {
-      setError(e);
-      console.error(error);
+      console.error(e);
     }
   };
 
