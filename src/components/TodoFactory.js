@@ -17,7 +17,7 @@ function TodoFactory({ userObj, todoDate }) {
       todo,
       Date: todoDate,
       createdAt: Date.now(),
-      isFinish: "false",
+      isFinish: false,
     };
 
     try {

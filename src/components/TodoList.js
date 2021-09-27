@@ -1,11 +1,4 @@
-import {
-  collection,
-  doc,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { dbService } from "../firebase";
 import Todo from "./Todo";
@@ -32,13 +25,13 @@ function TodoList({ userObj, todoDate }) {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [todoDate]);
 
   return (
     <>
       <TodoFactory userObj={userObj} todoDate={todoDate} />
       {todos.map(todo => (
-        <Todo key={todo.id} todoObj={todo} />
+        <Todo key={todo.id} userObj={userObj} todoObj={todo} />
       ))}
     </>
   );
