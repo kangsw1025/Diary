@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Router from "./Router";
 import { authService } from "../firebase";
+import Calendar from "./Calendar";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -17,13 +18,14 @@ function App() {
   }, []);
 
   return (
-    <>
-      {init ? (
-        <Router isLogin={userObj} userObj={userObj} />
-      ) : (
-        <div>Initializing...</div>
-      )}
-    </>
+    // <>
+    //   {init ? (
+    //     <Router isLogin={userObj} userObj={userObj} />
+    //   ) : (
+    //     <div>Initializing...</div>
+    //   )}
+    // </>
+    <Calendar />
   );
 }
 
