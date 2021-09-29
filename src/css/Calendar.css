@@ -1,0 +1,93 @@
+.wrap {
+  width: 40vw;
+  height: 60vh;
+  border: 1px solid gray;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.header-container {
+  flex-basis: 50px;
+  background-color: #fff0f5;
+  align-items: center;
+  display: flex;
+}
+
+.move-button {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+.icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.header-middle {
+  line-height: 50px;
+}
+
+.header-calendarYM {
+  box-sizing: border-box;
+  padding-left: 5px;
+  flex-grow: 1;
+}
+
+.header-buttons {
+  flex-basis: 120px;
+  padding-left: 0;
+  padding-top: 4px;
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  text-align: center;
+  align-items: center;
+}
+
+.header-buttons li {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+.body-container {
+  flex-grow: 1;
+  background-color: #fffafa;
+}
+
+.calendar-body-header {
+  display: flex;
+  height: 50px;
+  background-color: #ffdab9;
+}
+
+.calendar-date-component {
+  width: 14.2857143%;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #ffe4e1;
+  border: 0.1px solid white;
+  font-size: 1.5rem;
+  line-height: 50px;
+}
+
+.calendar-date-component:nth-child(odd) {
+  border-left: none;
+  border-right: none;
+}
+
+.date-sun {
+  color: #dc143c;
+}
+
+.date-sat {
+  color: #1e90ff;
+}
