@@ -5,7 +5,15 @@ import {
   faArrowCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-function CalndarHeader({ calendarYM, clickDate, prevMonth, nextMonth }) {
+function CalndarHeader({ calendarYM, clickDate, moveMonth }) {
+  const prevMonth = () => {
+    moveMonth(-1);
+  };
+
+  const nextMonth = () => {
+    moveMonth(1);
+  };
+
   return (
     <div className="header-container">
       {calendarYM && (

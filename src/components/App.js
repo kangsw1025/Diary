@@ -18,14 +18,14 @@ function App() {
   }, []);
 
   return (
-    // <>
-    //   {init ? (
-    //     <Router isLogin={userObj} userObj={userObj} />
-    //   ) : (
-    //     <div>Initializing...</div>
-    //   )}
-    // </>
-    <Calendar />
+    <>
+      {init ? (
+        <Router isLogin={userObj} userObj={userObj} />
+      ) : (
+        <div>Initializing...</div>
+      )}
+    </>
+    //<Calendar />
   );
 }
 

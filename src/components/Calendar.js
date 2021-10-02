@@ -1,35 +1,51 @@
-import React, { useState } from "react";
-import moment from "moment";
-import "../css/Calendar.css";
+import React, { useEffect, useState } from "react";
 import CalendarHeader from "./CalendarHeader";
 import CalendarBody from "./CalendarBody";
+import "../css/Calendar.css";
+import moment from "moment";
 
-function Calendar() {
-  const [calendarYM, setCalendarYM] = useState(moment());
-  const [clickDate, setClickDate] = useState(moment());
+function Calendar({ clickDate, setClickDate }) {
+  const [calendarYM, setCalendarYM] = useState(clickDate);
   const cloneDeep = require("lodash.clonedeep");
 
-  const prevMonth = () => {
+  const moveMonth = val => {
     const newYM = cloneDeep(calendarYM);
-    setCalendarYM(newYM.add(-1, "M"));
+    setCalendarYM(newYM.add(val, "M"));
   };
 
-  const nextMonth = () => {
-    const newYM = cloneDeep(calendarYM);
-    setCalendarYM(newYM.add(1, "M"));
+  const changeDate = clickedDate => {
+    if (moment(clickedDate).isSame(clickDate, "day")) {
+      return;
+    }
+
+    setClickDate(clickedDate);
+
+    if (moment(clickedDate).isBefore(calendarYM, "Month")) {
+      moveMonth(-1);
+    } else if (moment(clickedDate).isAfter(calendarYM, "month")) {
+      moveMonth(1);
+    }
   };
+
+  useEffect(() => console.log(clickDate), []);
 
   return (
-    <div className="wrap">
-      <div className="container">
+    <div className="calendar-wrap">
+      <div className="calendar-container">
         <CalendarHeader
           calendarYM={calendarYM.format("YYYY년 MM월")}
-          clickDate={clickDate.format("현재 YYYY - MM - DD")}
-          prevMonth={prevMonth}
-          nextMonth={nextMonth}
+          clickDate={
+            typeof clickDate === "string"
+              ? clickDate
+              : clickDate.format("현재 YYYY - MM - DD")
+          }
+          moveMonth={moveMonth}
         />
         <CalendarBody
           dateForm={["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]}
+          YM={calendarYM.format("YYYY-MM-DD")}
+          clickDate={clickDate}
+          changeDate={changeDate}
         />
       </div>
     </div>

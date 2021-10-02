@@ -1,10 +1,10 @@
-.wrap {
+.calendar-wrap {
   width: 40vw;
   height: 60vh;
   border: 1px solid gray;
 }
 
-.container {
+.calendar-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -61,6 +61,7 @@
 .body-container {
   flex-grow: 1;
   background-color: #fffafa;
+  height: 4vh;
 }
 
 .calendar-body-header {
@@ -72,11 +73,12 @@
 .calendar-date-component {
   width: 14.2857143%;
   text-align: center;
+  padding-top: 1.5%;
   box-sizing: border-box;
   background-color: #ffe4e1;
   border: 0.1px solid white;
   font-size: 1.5rem;
-  line-height: 50px;
+  line-height: 30px;
 }
 
 .calendar-date-component:nth-child(odd) {
@@ -90,4 +92,61 @@
 
 .date-sat {
   color: #1e90ff;
+}
+
+.calendar-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.calendar-day {
+  box-sizing: border-box;
+  position: relative;
+  flex-basis: 14.2857143%;
+  border: 0.1px solid white;
+  border-top: none;
+  background-color: #fff5ee;
+  text-align: right;
+  padding-top: 10px;
+  padding-right: 15px;
+  height: 5vh;
+}
+
+.calendar-day:nth-child(odd) {
+  border-left: none;
+  border-right: none;
+}
+
+.calendar-week {
+  display: flex;
+  flex-grow: 1;
+}
+
+.calendar-day-label {
+  display: inline-block;
+  font-size: 100%;
+  position: absolute;
+  text-align: center;
+  line-height: 25px;
+  top: 5px;
+  right: 5px;
+}
+
+.date-notThisMonth {
+  color: #dcdcdc;
+}
+
+.clicked {
+  background-color: #dcdcdc;
+}
+
+.clicked label {
+  font-size: 1.2rem;
+  font: bold;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
 }
