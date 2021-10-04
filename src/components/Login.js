@@ -44,6 +44,7 @@ function AuthForm() {
             placeholder="Email"
             onChange={onChange}
             required
+            autoComplete="off"
           />
         </div>
         <div className="password">
@@ -56,6 +57,8 @@ function AuthForm() {
             className="authInput"
             placeholder="Password"
             onChange={onChange}
+            minLength="8"
+            maxLength="16"
             required
           />
         </div>

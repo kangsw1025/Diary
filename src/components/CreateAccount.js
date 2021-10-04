@@ -29,7 +29,7 @@ function CreateAccount() {
       );
       console.log(data);
     } catch (e) {
-      console.error(e);
+      alert("이미 가입된 이메일입니다");
     }
   };
   return (
@@ -45,6 +45,7 @@ function CreateAccount() {
             className="authInput"
             placeholder="Email"
             onChange={onChange}
+            autoComplete="off"
             required
           />
         </div>
@@ -57,6 +58,8 @@ function CreateAccount() {
             type="password"
             className="authInput"
             placeholder="Password"
+            minLength="8"
+            maxLength="16"
             onChange={onChange}
             required
           />
