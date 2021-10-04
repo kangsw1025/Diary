@@ -8,8 +8,11 @@ function Header({ todoDate }) {
   const history = useHistory();
 
   const onLogOutClick = () => {
-    authService.signOut();
-    history.push("/");
+    var result = window.confirm("Are you really want to Logout?");
+    if (result) {
+      authService.signOut();
+      history.push("/");
+    }
   };
 
   return (
