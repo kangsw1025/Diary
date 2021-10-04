@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   background-color: #fdf5e6;
+  overflow: hidden;
 }
 
 .auth-container {
@@ -138,8 +139,8 @@
 }
 
 .container {
-  width: 80%;
-  margin-top: 10%;
+  width: 70%;
+  margin-top: 5%;
   height: 70%;
   background-image: url(../img/gridme.png);
   box-shadow: 3px 3px 5px 5px gray;
@@ -153,17 +154,32 @@
   height: 10%;
 }
 
-.click-Date {
-  width: 80%;
-  text-align: center;
+.left-space {
+  box-sizing: border-box;
+  width: 40%;
+}
+
+.right-space {
+  box-sizing: border-box;
+  display: flex;
+  width: 60%;
+  padding: 0;
   padding-top: 1.5%;
+  padding-left: 5%;
+}
+
+.click-Date {
+  box-sizing: border-box;
+  text-align: center;
   font-size: 2rem;
   font-family: "Times New Roman", Times, serif;
+  width: 90%;
 }
 
 .logoutBtn {
-  text-align: right;
-  padding-top: 1.5%;
+  box-sizing: border-box;
+  padding: 0;
+  width: 5%;
   font-size: 1.25rem;
   cursor: pointer;
 }

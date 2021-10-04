@@ -18,7 +18,7 @@ function Calendar({ clickDate, setClickDate }) {
       return;
     }
 
-    setClickDate(clickedDate);
+    setClickDate(moment(clickedDate));
 
     if (moment(clickedDate).isBefore(calendarYM, "Month")) {
       moveMonth(-1);
