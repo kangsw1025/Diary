@@ -27,8 +27,6 @@ function Calendar({ clickDate, setClickDate }) {
     }
   };
 
-  useEffect(() => console.log(clickDate), []);
-
   return (
     <div className="calendar-wrap">
       <div className="calendar-container">
@@ -36,8 +34,8 @@ function Calendar({ clickDate, setClickDate }) {
           calendarYM={calendarYM.format("YYYY년 MM월")}
           clickDate={
             typeof clickDate === "string"
-              ? clickDate
-              : clickDate.format("현재 YYYY - MM - DD")
+              ? `현재 ${clickDate}`
+              : clickDate.format("현재 YYYY-MM-DD")
           }
           moveMonth={moveMonth}
         />

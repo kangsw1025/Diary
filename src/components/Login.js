@@ -1,28 +1,25 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { authService } from "../firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
-function CreateAccount() {
+function AuthForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onChange = e => {
     const { name, value } = e.target;
 
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
+    if (name === "email") setEmail(value);
+    if (name === "password") setPassword(value);
   };
 
   const onSubmit = async e => {
     e.preventDefault();
 
     try {
-      const data = await createUserWithEmailAndPassword(
+      const data = await signInWithEmailAndPassword(
         authService,
         email,
         password
@@ -32,6 +29,7 @@ function CreateAccount() {
       console.error(e);
     }
   };
+
   return (
     <form onSubmit={onSubmit}>
       <div className="input-form">
@@ -61,10 +59,10 @@ function CreateAccount() {
             required
           />
         </div>
-        <button className="authBtn">Sign Up</button>
+        <button className="authBtn">Sign In</button>
       </div>
     </form>
   );
 }
 
-export default CreateAccount;
+export default AuthForm;

@@ -1,7 +1,8 @@
 .calendar-wrap {
-  width: 40vw;
+  width: 45%;
   height: 60vh;
-  border: 1px solid gray;
+  padding: 0 5px;
+  border-right: 2px solid brown;
 }
 
 .calendar-container {
@@ -13,9 +14,10 @@
 
 .header-container {
   flex-basis: 50px;
-  background-color: #fff0f5;
-  align-items: center;
   display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 20%;
 }
 
 .move-button {
@@ -38,36 +40,28 @@
   box-sizing: border-box;
   padding-left: 5px;
   flex-grow: 1;
-}
-
-.header-buttons {
-  flex-basis: 120px;
-  padding-left: 0;
-  padding-top: 4px;
-  display: block;
-  list-style-type: none;
-  margin: 0;
+  font-size: 1.1rem;
   text-align: center;
-  align-items: center;
+  overflow: hidden;
 }
 
-.header-buttons li {
-  float: left;
-  height: 40px;
-  line-height: 40px;
-  font-size: 16px;
+.move-button {
+  text-align: center;
+  padding-top: 4%;
+  font-size: 1.5rem;
 }
 
 .body-container {
   flex-grow: 1;
-  background-color: #fffafa;
   height: 4vh;
+  overflow: auto;
+  justify-content: center;
+  padding: 0 10%;
 }
 
 .calendar-body-header {
   display: flex;
   height: 50px;
-  background-color: #ffdab9;
 }
 
 .calendar-date-component {
@@ -75,9 +69,8 @@
   text-align: center;
   padding-top: 1.5%;
   box-sizing: border-box;
-  background-color: #ffe4e1;
   border: 0.1px solid white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 30px;
 }
 
@@ -105,13 +98,9 @@
   box-sizing: border-box;
   position: relative;
   flex-basis: 14.2857143%;
-  border: 0.1px solid white;
   border-top: none;
-  background-color: #fff5ee;
-  text-align: right;
-  padding-top: 10px;
-  padding-right: 15px;
   height: 5vh;
+  width: 5vh;
 }
 
 .calendar-day:nth-child(odd) {
@@ -122,16 +111,18 @@
 .calendar-week {
   display: flex;
   flex-grow: 1;
+  width: 100%;
 }
 
 .calendar-day-label {
-  display: inline-block;
   font-size: 100%;
   position: absolute;
   text-align: center;
+  display: table-cell;
+  vertical-align: middle;
   line-height: 25px;
-  top: 5px;
-  right: 5px;
+  left: 30%;
+  right: 30%;
 }
 
 .date-notThisMonth {
@@ -139,14 +130,14 @@
 }
 
 .clicked {
-  background-color: #dcdcdc;
+  border: 1px solid gray;
+  border-radius: 100%;
+  background-color: gray;
 }
 
 .clicked label {
   font-size: 1.2rem;
   font: bold;
   color: white;
-  width: 25px;
-  height: 25px;
   border-radius: 100%;
 }

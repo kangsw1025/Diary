@@ -1,3 +1,37 @@
 .todoList-Container {
   display: inline-block;
+  width: 60%;
+  padding-left: 5%;
+  overflow: auto;
+}
+
+.todo-Input-form {
+  display: flex;
+  justify-content: center;
+}
+
+.todo-Input {
+  box-sizing: padding-box;
+  padding: 0 10px;
+  height: 30px;
+  width: 45%;
+  border-radius: 10px;
+  border: 2px solid gray;
+  margin: 5px 0;
+}
+
+.todo-InputBtn {
+  margin-left: 5px;
+  width: 7.5%;
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.todo-EventBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

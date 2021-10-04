@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { dbService } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function TodoFactory({ userObj, todoDate }) {
   const [todo, setTodo] = useState("");
@@ -29,14 +31,17 @@ function TodoFactory({ userObj, todoDate }) {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="todo-Input-form" onSubmit={onSubmit}>
       <input
+        className="todo-Input"
         type="text"
-        placeholder="Write Todo"
+        placeholder=" Write what will you do"
         onChange={onChange}
         value={todo}
       />
-      <input type="submit" value="Add" />
+      <button className="todo-InputBtn">
+        <FontAwesomeIcon icon={faPlus} />
+      </button>
     </form>
   );
 }

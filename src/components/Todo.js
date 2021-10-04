@@ -1,8 +1,14 @@
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { dbService } from "../firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEdit,
+  faTrashAlt,
+  faWindowClose,
+} from "@fortawesome/free-solid-svg-icons";
 
-function Todo({ userObj, todoObj }) {
+function Todo({ userObj, todoObj, index }) {
   const [editing, setEditing] = useState(false);
   const [newTodo, setNewTodo] = useState(todoObj.todo);
   const [error, setError] = useState(false);
@@ -50,14 +56,19 @@ function Todo({ userObj, todoObj }) {
   return editing ? (
     <>
       <form onSubmit={onSubmit}>
-        <input type="text" value={newTodo} onChange={onChange} minLength={1} />
-        <input type="submit" value="Update" style={{ marginLeft: "5px" }} />
         <input
-          type="button"
-          value="Cancle"
-          style={{ marginLeft: "5px" }}
-          onClick={onCancleClick}
+          type="text"
+          className="todo-Input"
+          value={newTodo}
+          onChange={onChange}
+          minLength={1}
         />
+        <button className="todo-EventBtn" onClick={onSubmit}>
+          <FontAwesomeIcon icon={faEdit} />
+        </button>
+        <button className="todo-EventBtn" onClick={onCancleClick}>
+          <FontAwesomeIcon icon={faWindowClose} />
+        </button>
       </form>
       {error && <div>Please write more than 1 word</div>}
     </>
@@ -71,19 +82,21 @@ function Todo({ userObj, todoObj }) {
             : null
         }
       >
-        {todoObj.todo}
+        {`${index + 1}. ${todoObj.todo}`}
       </h4>
       <button
+        className="todo-EventBtn"
         onClick={onToggleEdit}
         style={{ marginLeft: "5px", height: "50%" }}
       >
-        Edit
+        <FontAwesomeIcon icon={faEdit} />
       </button>
       <button
+        className="todo-EventBtn"
         onClick={onDeleteClick}
         style={{ marginLeft: "5px", height: "50%" }}
       >
-        Delete
+        <FontAwesomeIcon icon={faTrashAlt} />
       </button>
     </div>
   );

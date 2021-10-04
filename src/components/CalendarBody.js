@@ -48,7 +48,6 @@ function Week({
         <div
           className={"calendar-day " + className}
           onClick={() => {
-            console.log(dayInfo.yearMonthDayFormat);
             changeDate(dayInfo.yearMonthDayFormat);
           }}
         >

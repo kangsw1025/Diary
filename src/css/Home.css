@@ -1,3 +1,173 @@
+.wrap {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #fdf5e6;
+}
+
+.auth-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 60%;
+  width: 30%;
+  align-items: center;
+  margin-top: 10%;
+  padding-top: 3%;
+  box-shadow: 2px 2px 2px 2px gray;
+  overflow: hidden;
+}
+
+.title {
+  margin-bottom: 7%;
+  font-size: 40px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.menu-tap {
+  border-bottom: 1px solid gray;
+  height: 7.5%;
+  width: 60%;
+  display: inline-flex;
+  justify-content: left;
+  margin-bottom: 3%;
+}
+
+.menu {
+  color: gray;
+  display: inline-block;
+  margin-right: 5%;
+  text-align: center;
+  width: 20%;
+  margin: 0 0;
+  cursor: pointer;
+}
+
+.selected {
+  color: black;
+  font: bold;
+  border-bottom: 1px solid black;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15%;
+}
+
+.email {
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+  width: 80%;
+  font: 1rem;
+}
+
+.password {
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+  width: 80%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  font: 1rem;
+}
+
+.input-icon {
+  box-sizing: border-box;
+  width: 10%;
+  padding: 10px;
+}
+
+.authInput {
+  box-sizing: border-box;
+  background-color: white;
+  border: none;
+  width: 90%;
+  font-size: 1.2rem;
+  padding: 7px 0.5%;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.authInput:focus {
+  outline: none;
+}
+
+.authBtn {
+  box-sizing: border-box;
+  width: 80%;
+  background-color: white;
+  border: 2px solid black;
+  font-size: 1.2rem;
+  padding: 5px 0;
+  margin-top: 2.5%;
+  cursor: pointer;
+}
+
+.social-form {
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  margin-top: 3%;
+  width: 50%;
+  justify-content: space-around;
+}
+
+.social-icon {
+  cursor: pointer;
+  color: gray;
+  font-size: 1.2rem;
+  background-color: white;
+  border: none;
+}
+
 .container {
+  width: 80%;
+  margin-top: 10%;
+  height: 70%;
+  background-image: url(../img/gridme.png);
+  box-shadow: 3px 3px 5px 5px gray;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding-top: 2%;
+  margin-bottom: 5px;
+  height: 10%;
+}
+
+.click-Date {
+  width: 80%;
+  text-align: center;
+  padding-top: 1.5%;
+  font-size: 2rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.logoutBtn {
+  text-align: right;
+  padding-top: 1.5%;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.body {
   display: flex;
 }

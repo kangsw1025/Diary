@@ -31,9 +31,11 @@ function TodoList({ userObj, todoDate }) {
   return (
     <div className="todoList-Container">
       <TodoFactory userObj={userObj} todoDate={todoDate} />
-      {todos.map(todo => (
-        <Todo key={todo.id} userObj={userObj} todoObj={todo} />
-      ))}
+      <div className="todo-Container">
+        {todos.map((todo, index) => (
+          <Todo key={todo.id} userObj={userObj} todoObj={todo} index={index} />
+        ))}
+      </div>
     </div>
   );
 }
