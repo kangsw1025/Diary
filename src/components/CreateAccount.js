@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -18,20 +18,24 @@ function CreateAccount() {
     }
   };
 
-  const onSubmit = async e => {
-    e.preventDefault();
+  const onSubmit = useCallback(
+    async e => {
+      e.preventDefault();
 
-    try {
-      const data = await createUserWithEmailAndPassword(
-        authService,
-        email,
-        password
-      );
-      console.log(data);
-    } catch (e) {
-      alert("이미 가입된 이메일입니다");
-    }
-  };
+      try {
+        const data = await createUserWithEmailAndPassword(
+          authService,
+          email,
+          password
+        );
+        console.log(data);
+      } catch (e) {
+        alert("이미 가입된 이메일입니다");
+      }
+    },
+    [email, password]
+  );
+
   return (
     <form onSubmit={onSubmit}>
       <div className="input-form">
@@ -70,4 +74,4 @@ function CreateAccount() {
   );
 }
 
-export default CreateAccount;
+export default React.memo(CreateAccount);

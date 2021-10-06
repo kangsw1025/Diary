@@ -32,14 +32,14 @@ function Todo({ userObj, todoObj, index }) {
         todo: newTodo,
       });
       setError(false);
-      setEditing(!editing);
+      setEditing(editing => !editing);
     }
   };
 
   const onCancleClick = () => {
     setNewTodo(todoObj.todo);
     setError(false);
-    setEditing(!editing);
+    setEditing(editing => !editing);
   };
 
   const onDeleteClick = async () => {
@@ -102,4 +102,4 @@ function Todo({ userObj, todoObj, index }) {
   );
 }
 
-export default Todo;
+export default React.memo(Todo);

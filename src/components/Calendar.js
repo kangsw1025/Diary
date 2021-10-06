@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import CalendarHeader from "./CalendarHeader";
 import CalendarBody from "./CalendarBody";
 import "../css/Calendar.css";
@@ -8,24 +8,30 @@ function Calendar({ clickDate, setClickDate }) {
   const [calendarYM, setCalendarYM] = useState(clickDate);
   const cloneDeep = require("lodash.clonedeep");
 
-  const moveMonth = val => {
-    const newYM = cloneDeep(calendarYM);
-    setCalendarYM(newYM.add(val, "M"));
-  };
+  const moveMonth = useCallback(
+    val => {
+      const newYM = cloneDeep(calendarYM);
+      setCalendarYM(newYM.add(val, "M"));
+    },
+    [calendarYM, cloneDeep]
+  );
 
-  const changeDate = clickedDate => {
-    if (moment(clickedDate).isSame(clickDate, "day")) {
-      return;
-    }
+  const changeDate = useCallback(
+    clickedDate => {
+      if (moment(clickedDate).isSame(clickDate, "day")) {
+        return;
+      }
 
-    setClickDate(moment(clickedDate));
+      setClickDate(moment(clickedDate));
 
-    if (moment(clickedDate).isBefore(calendarYM, "Month")) {
-      moveMonth(-1);
-    } else if (moment(clickedDate).isAfter(calendarYM, "month")) {
-      moveMonth(1);
-    }
-  };
+      if (moment(clickedDate).isBefore(calendarYM, "Month")) {
+        moveMonth(-1);
+      } else if (moment(clickedDate).isAfter(calendarYM, "month")) {
+        moveMonth(1);
+      }
+    },
+    [clickDate, calendarYM, setClickDate, moveMonth]
+  );
 
   return (
     <div className="calendar-wrap">
@@ -50,4 +56,4 @@ function Calendar({ clickDate, setClickDate }) {
   );
 }
 
-export default Calendar;
+export default React.memo(Calendar);

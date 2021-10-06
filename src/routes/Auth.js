@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Login from "../components/Login";
 import CreateAccount from "../components/CreateAccount";
 import {
@@ -13,7 +13,7 @@ import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 function Auth() {
   const [createAccount, setCreateAccount] = useState(false);
 
-  const onSocialClick = async e => {
+  const onSocialClick = useCallback(async e => {
     const { name } = e.target;
     console.log(e.target);
     var provider;
@@ -24,27 +24,30 @@ function Auth() {
       provider = new GithubAuthProvider();
     }
     await signInWithPopup(authService, provider);
-  };
+  }, []);
 
-  const onClick = e => {
-    const name = e.target.className.split(" ")[0];
+  const onClick = useCallback(
+    e => {
+      const name = e.target.className.split(" ")[0];
 
-    if (name === "sign-in") {
-      if (createAccount === false) return;
-      setCreateAccount(false);
-    } else if (name === "sign-up") {
-      if (createAccount === true) return;
-      setCreateAccount(true);
-    }
+      if (name === "sign-in") {
+        if (createAccount === false) return;
+        setCreateAccount(false);
+      } else if (name === "sign-up") {
+        if (createAccount === true) return;
+        setCreateAccount(true);
+      }
 
-    const menuTap = document.querySelector(".menu-tap");
+      const menuTap = document.querySelector(".menu-tap");
 
-    Array.from(menuTap.children).forEach(child =>
-      child.classList.remove("selected")
-    );
+      Array.from(menuTap.children).forEach(child =>
+        child.classList.remove("selected")
+      );
 
-    e.target.classList.add("selected");
-  };
+      e.target.classList.add("selected");
+    },
+    [createAccount]
+  );
 
   useEffect(() => {
     const signIn = document.querySelector(".sign-in");
@@ -90,4 +93,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default React.memo(Auth);

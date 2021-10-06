@@ -8,11 +8,9 @@ export default ({ isLogin, userObj }) => {
     <Router>
       <Switch>
         {isLogin ? (
-          <>
-            <Route path="/" exact>
-              <Home userObj={userObj} />
-            </Route>
-          </>
+          <Route path="/" exact>
+            <Home userObj={userObj} />
+          </Route>
         ) : (
           <Route path="/" exact>
             <Auth />

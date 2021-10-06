@@ -1,7 +1,7 @@
 import moment from "moment";
-import React from "react";
+import React, { useCallback } from "react";
 
-function Week({
+const Week = React.memo(function Week({
   firstDayOfThisWeekFormat,
   ymOfThisCalendar,
   clickDate,
@@ -67,7 +67,7 @@ function Week({
       )}
     </div>
   );
-}
+});
 
 function CalendarBody({ dateForm, YM, clickDate, changeDate }) {
   const mapArrayToDate = form => {
@@ -91,7 +91,7 @@ function CalendarBody({ dateForm, YM, clickDate, changeDate }) {
     });
   };
 
-  const Weeks = (monthYear, clickDate, changeDate) => {
+  const Weeks = useCallback((monthYear, clickDate, changeDate) => {
     const firstDayOfMonth = moment(monthYear).startOf("month");
     const firstDateOfMonth = firstDayOfMonth.get("d");
 
@@ -115,7 +115,7 @@ function CalendarBody({ dateForm, YM, clickDate, changeDate }) {
       );
     }
     return _Weeks;
-  };
+  }, []);
 
   return (
     <div className="body-container">
@@ -125,4 +125,4 @@ function CalendarBody({ dateForm, YM, clickDate, changeDate }) {
   );
 }
 
-export default CalendarBody;
+export default React.memo(CalendarBody);

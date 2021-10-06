@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { dbService } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,24 +11,30 @@ function TodoFactory({ userObj, todoDate }) {
     setTodo(e.target.value);
   };
 
-  const onSubmit = async e => {
-    e.preventDefault();
-    if (todo === "") return;
+  const onSubmit = useCallback(
+    async e => {
+      e.preventDefault();
+      if (todo === "") return;
 
-    const todoObj = {
-      todo,
-      Date: todoDate,
-      createdAt: Date.now(),
-      isFinish: false,
-    };
+      const todoObj = {
+        todo,
+        Date: todoDate,
+        createdAt: Date.now(),
+        isFinish: false,
+      };
 
-    try {
-      const docRef = await addDoc(collection(dbService, userObj.uid), todoObj);
-      setTodo("");
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  };
+      try {
+        const docRef = await addDoc(
+          collection(dbService, userObj.uid),
+          todoObj
+        );
+        setTodo("");
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    },
+    [todo, todoDate, userObj]
+  );
 
   return (
     <form className="todo-Input-form" onSubmit={onSubmit}>
@@ -46,4 +52,4 @@ function TodoFactory({ userObj, todoDate }) {
   );
 }
 
-export default TodoFactory;
+export default React.memo(TodoFactory);

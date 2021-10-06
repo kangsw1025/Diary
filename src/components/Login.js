@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { authService } from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,20 +15,23 @@ function AuthForm() {
     if (name === "password") setPassword(value);
   };
 
-  const onSubmit = async e => {
-    e.preventDefault();
+  const onSubmit = useCallback(
+    async e => {
+      e.preventDefault();
 
-    try {
-      const data = await signInWithEmailAndPassword(
-        authService,
-        email,
-        password
-      );
-      console.log(data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+      try {
+        const data = await signInWithEmailAndPassword(
+          authService,
+          email,
+          password
+        );
+        console.log(data);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    [email, password]
+  );
 
   return (
     <form onSubmit={onSubmit}>
@@ -68,4 +71,4 @@ function AuthForm() {
   );
 }
 
-export default AuthForm;
+export default React.memo(AuthForm);

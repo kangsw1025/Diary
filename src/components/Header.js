@@ -30,4 +30,4 @@ function Header({ todoDate }) {
   );
 }
 
-export default Header;
+export default React.memo(Header);

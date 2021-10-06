@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import TodoList from "../components/TodoList";
 import moment from "moment";
@@ -24,4 +24,4 @@ function Home({ userObj }) {
   );
 }
 
-export default Home;
+export default React.memo(Home);

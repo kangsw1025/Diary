@@ -5,7 +5,7 @@ import {
   faArrowCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-function CalndarHeader({ calendarYM, clickDate, moveMonth }) {
+function CalndarHeader({ calendarYM, moveMonth }) {
   const prevMonth = () => {
     moveMonth(-1);
   };
@@ -27,4 +27,4 @@ function CalndarHeader({ calendarYM, clickDate, moveMonth }) {
   );
 }
 
-export default CalndarHeader;
+export default React.memo(CalndarHeader);

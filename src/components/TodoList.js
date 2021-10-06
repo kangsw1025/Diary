@@ -26,7 +26,7 @@ function TodoList({ userObj, todoDate }) {
     return () => {
       unsubscribe();
     };
-  }, [todoDate]);
+  }, [userObj, todoDate]);
 
   return (
     <div className="todoList-Container">
@@ -40,4 +40,4 @@ function TodoList({ userObj, todoDate }) {
   );
 }
 
-export default TodoList;
+export default React.memo(TodoList);
