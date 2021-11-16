@@ -40,3 +40,8 @@
 2. 메인 페이지
 
    ![main_page](./src/img/main-page.gif)
+   
+   
+## 📄 호스팅 주소
+
+   [Diary](https://kangsw1025.github.io/Diary)
