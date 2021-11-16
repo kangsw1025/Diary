@@ -76,7 +76,7 @@ function CalendarBody({ dateForm, YM, clickDate, changeDate }) {
         let className = "calendar-date-component";
         if (idx === 0) {
           return className + " date-sun";
-        } else if (idx == 6) {
+        } else if (idx === 6) {
           return className + " date-sat";
         } else {
           return className + " date-weekday";
