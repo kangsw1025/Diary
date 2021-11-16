@@ -14,15 +14,7 @@ function Auth() {
   const [createAccount, setCreateAccount] = useState(false);
 
   const onSocialClick = useCallback(async e => {
-    const { name } = e.target;
-    console.log(e.target);
-    var provider;
-
-    if (name === "google") {
-      provider = new GoogleAuthProvider();
-    } else if (name === "github") {
-      provider = new GithubAuthProvider();
-    }
+    const provider = new GoogleAuthProvider();
     await signInWithPopup(authService, provider);
   }, []);
 
@@ -76,14 +68,11 @@ function Auth() {
                 onClick={onSocialClick}
                 name="google"
               >
-                <FontAwesomeIcon icon={faGoogle} onClick={() => {}} />
-              </button>
-              <button
-                className="social-icon"
-                onClick={onSocialClick}
-                name="github"
-              >
-                <FontAwesomeIcon icon={faGithub} onClick={() => {}} />
+                login with
+                <FontAwesomeIcon
+                  icon={faGoogle}
+                  style={{ marginLeft: "10px" }}
+                />
               </button>
             </div>
           </div>

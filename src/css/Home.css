@@ -15,6 +15,7 @@
   background-color: white;
   height: 60%;
   width: 30%;
+  min-width: calc(19.2px * 30);
   align-items: center;
   margin-top: 10%;
   padding-top: 3%;
@@ -121,21 +122,29 @@
   flex-direction: column;
   color: gray;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
 }
 
 .social-icons {
   display: flex;
-  margin-top: 3%;
-  width: 50%;
+  margin-top: 6%;
+  width: 100%;
   justify-content: space-around;
 }
 
 .social-icon {
   cursor: pointer;
   color: gray;
-  font-size: 1.2rem;
+  font-size: 18px;
   background-color: white;
   border: none;
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
