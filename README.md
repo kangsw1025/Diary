@@ -44,4 +44,4 @@
    
 ## 📄 호스팅 주소
 
-   [Diary](https://kangsw1025.github.io/Diary)
+  - [Diary](https://kangsw1025.github.io/Diary)
